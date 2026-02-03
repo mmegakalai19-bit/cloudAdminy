@@ -1,0 +1,542 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Basics - Learn How Websites Work | CloudAdmin</title>
+    <meta name="description" content="Beginner-friendly guides on web fundamentals. Learn HTML, CSS, JavaScript, and how websites work from the ground up.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-card: #ffffff;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-tertiary: #64748b;
+            --border-color: #e2e8f0;
+            --accent-blue: #3b82f6;
+            --accent-blue-hover: #2563eb;
+            --accent-blue-light: #dbeafe;
+            --accent-blue-lighter: #eff6ff;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.12);
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-card: #1e293b;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --text-tertiary: #94a3b8;
+            --border-color: #334155;
+            --accent-blue: #60a5fa;
+            --accent-blue-hover: #3b82f6;
+            --accent-blue-light: #1e3a8a;
+            --accent-blue-lighter: #1e293b;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+            --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.5);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        header {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border-color);
+            background: var(--bg-card);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--accent-blue);
+            text-decoration: none;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-blue);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .theme-toggle:hover {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            padding: 20px 0;
+            background: var(--bg-secondary);
+        }
+
+        .breadcrumb-nav {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+
+        .breadcrumb-nav a {
+            color: var(--text-tertiary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .breadcrumb-nav a:hover {
+            color: var(--accent-blue);
+        }
+
+        .breadcrumb-nav span {
+            color: var(--text-tertiary);
+        }
+
+        .breadcrumb-nav .current {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        /* Page Header */
+        .page-header {
+            padding: 56px 0 48px;
+            background: var(--bg-secondary);
+        }
+
+        .category-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            background: var(--accent-blue-light);
+            color: var(--accent-blue);
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .page-header h1 {
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .page-header p {
+            font-size: 19px;
+            color: var(--text-secondary);
+            max-width: 750px;
+            line-height: 1.7;
+        }
+
+        /* What You'll Learn */
+        .what-learn {
+            padding: 64px 0;
+            background: var(--bg-primary);
+        }
+
+        .what-learn h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 24px;
+        }
+
+        .what-learn-intro {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            line-height: 1.7;
+            max-width: 800px;
+        }
+
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 32px;
+        }
+
+        .topic-card {
+            padding: 28px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+
+        .topic-card:hover {
+            border-color: var(--accent-blue);
+            box-shadow: var(--shadow-md);
+        }
+
+        .topic-icon {
+            font-size: 36px;
+            margin-bottom: 16px;
+        }
+
+        .topic-card h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+        }
+
+        .topic-card p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Articles Section */
+        .articles-section {
+            padding: 64px 0;
+            background: var(--bg-secondary);
+        }
+
+        .articles-section h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 40px;
+        }
+
+        .articles-grid {
+            display: grid;
+            gap: 24px;
+        }
+
+        .article-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 32px;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .article-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--accent-blue);
+        }
+
+        .article-number {
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            background: var(--accent-blue-lighter);
+            color: var(--accent-blue);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 32px;
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+
+        .article-card h3 {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .article-description {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .read-guide {
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: gap 0.2s;
+        }
+
+        .read-guide:hover {
+            gap: 10px;
+        }
+
+        /* Learning Path */
+        .learning-path {
+            padding: 64px 0;
+            background: var(--accent-blue-lighter);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .learning-path-content {
+            max-width: 750px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .learning-path h2 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+        }
+
+        .learning-path p {
+            font-size: 17px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        .path-highlight {
+            background: var(--bg-card);
+            padding: 24px;
+            border-radius: 12px;
+            margin-top: 24px;
+            border: 1px solid var(--border-color);
+        }
+
+        .path-highlight p {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            background: var(--bg-card);
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        footer p {
+            color: var(--text-tertiary);
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 36px;
+            }
+
+            .page-header p {
+                font-size: 17px;
+            }
+
+            .what-learn h2,
+            .articles-section h2 {
+                font-size: 28px;
+            }
+
+            .topics-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .article-card h3 {
+                font-size: 21px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <a href="/" class="logo">CloudAdmin</a>
+            <div class="nav-right">
+                <a href="/blog" class="nav-link">Blog</a>
+                <button class="theme-toggle" id="themeToggle">
+                    <span id="themeIcon">🌙 Dark</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Breadcrumb -->
+    <section class="breadcrumb">
+        <div class="container">
+            <nav class="breadcrumb-nav">
+                <a href="/">Home</a>
+                <span>/</span>
+                <a href="/blog">Blog</a>
+                <span>/</span>
+                <span class="current">Web Basics</span>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <span class="category-badge">Category</span>
+            <h1>Web Basics</h1>
+            <p>Understanding how websites work is the foundation of everything you'll learn about the modern web. This section breaks down the core technologies that power every website you visit, from simple landing pages to complex web applications.</p>
+        </div>
+    </section>
+
+    <!-- What You'll Learn -->
+    <section class="what-learn">
+        <div class="container">
+            <h2>What You'll Learn</h2>
+            <p class="what-learn-intro">The web can seem complex at first, but it's built on just a few fundamental concepts. These guides will walk you through the essential building blocks that make websites work, explained in plain language without technical jargon.</p>
+            
+            <div class="topics-grid">
+                <div class="topic-card">
+                    <div class="topic-icon">🌐</div>
+                    <h3>How Websites Work</h3>
+                    <p>Understand the journey from typing a URL to seeing a webpage. Learn about domains, hosting, servers, and how browsers display content.</p>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-icon">📝</div>
+                    <h3>HTML, CSS, and JavaScript</h3>
+                    <p>Discover the three core technologies behind every website. HTML structures content, CSS styles it, and JavaScript makes it interactive.</p>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-icon">🔧</div>
+                    <h3>How Browsers Interpret Pages</h3>
+                    <p>Learn how browsers read code and turn it into the visual pages you see. Understand rendering, the DOM, and why different browsers sometimes behave differently.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Articles Section -->
+    <section class="articles-section">
+        <div class="container">
+            <h2>Articles in This Section</h2>
+            
+            <div class="articles-grid">
+                <article class="article-card">
+                    <span class="article-number">1</span>
+                    <h3>How Websites Work: Domains, Hosting & Browsers</h3>
+                    <p class="article-description">Start with the big picture. This guide explains what happens when you visit a website, from entering a URL to seeing content on your screen. Learn about domain names, web hosting, DNS, and how browsers request and display web pages.</p>
+                    <a href="#" class="read-guide">Read Guide →</a>
+                </article>
+
+                <article class="article-card">
+                    <span class="article-number">2</span>
+                    <h3>HTML vs CSS vs JavaScript Explained Simply</h3>
+                    <p class="article-description">Understand the difference between the three core web technologies and how they work together. HTML provides structure, CSS handles visual design, and JavaScript adds interactivity. This guide uses real-world analogies to make each technology clear.</p>
+                    <a href="#" class="read-guide">Read Guide →</a>
+                </article>
+
+                <article class="article-card">
+                    <span class="article-number">3</span>
+                    <h3>Essential HTML Tags for Beginners</h3>
+                    <p class="article-description">Learn the most important HTML tags you'll use when building web pages. Covers headings, paragraphs, links, images, lists, and semantic elements. Includes practical examples and best practices for writing clean, accessible HTML.</p>
+                    <a href="/web-basics/essential-html-tags.html" class="read-guide">Read Guide →</a>
+                    </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learning Path Guidance -->
+    <section class="learning-path">
+        <div class="container">
+            <div class="learning-path-content">
+                <h2>Your Learning Path</h2>
+                <p>If you're new to web development, start here. These Web Basics guides build the foundation you'll need for understanding more advanced topics like SEO optimization, developer tools, and SaaS platforms.</p>
+                <p>Once you're comfortable with how websites work and the role of HTML, CSS, and JavaScript, you'll be ready to explore our other categories with confidence.</p>
+                
+                <div class="path-highlight">
+                    <p><strong>Recommended next steps:</strong> After completing these guides, explore the SEO category to learn how search engines find and rank your web content, or visit Tools to discover the software developers use to build websites efficiently.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 CloudAdmin. Educational guides for the cloud-first web.</p>
+        </div>
+    </footer>
+
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const html = document.documentElement;
+
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        html.setAttribute('data-theme', savedTheme);
+        updateThemeIcon(savedTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+
+        function updateThemeIcon(theme) {
+            themeIcon.textContent = theme === 'light' ? '🌙 Dark' : '☀️ Light';
+        }
+    </script>
+</body>
+</html>
+<!--changes need to be done-->
