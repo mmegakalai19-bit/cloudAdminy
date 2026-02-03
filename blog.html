@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>CloudAdmin Blog – Beginner Guides on Web, SEO, SaaS & Tools</title>
+  <meta name="description" content="Beginner-friendly, evergreen guides on web basics, SEO, SaaS concepts, and digital tools. Learn the cloud-first web with clear explanations." />
+  <link rel="canonical" href="https://cloudadmin.live/blog/" />
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg-primary:#ffffff;
+      --bg-secondary:#f8fafc;
+      --bg-card:#ffffff;
+      --text-primary:#0f172a;
+      --text-secondary:#475569;
+      --text-tertiary:#64748b;
+      --border-color:#e2e8f0;
+      --accent-blue:#3b82f6;
+      --accent-blue-light:#dbeafe;
+      --accent-green:#10b981;
+      --accent-green-light:#d1fae5;
+      --accent-purple:#8b5cf6;
+      --accent-purple-light:#ede9fe;
+      --accent-orange:#f59e0b;
+      --accent-orange-light:#fef3c7;
+      --shadow-hover:0 8px 24px rgba(0,0,0,.12);
+    }
+
+    [data-theme="dark"] {
+      --bg-primary:#0f172a;
+      --bg-secondary:#1e293b;
+      --bg-card:#1e293b;
+      --text-primary:#f1f5f9;
+      --text-secondary:#cbd5e1;
+      --text-tertiary:#94a3b8;
+      --border-color:#334155;
+      --accent-blue:#60a5fa;
+      --accent-blue-light:#1e3a8a;
+      --accent-green:#34d399;
+      --accent-green-light:#064e3b;
+      --accent-purple:#a78bfa;
+      --accent-purple-light:#4c1d95;
+      --accent-orange:#fbbf24;
+      --accent-orange-light:#78350f;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    .container { max-width:1200px; margin:auto; padding:0 24px; }
+
+    header {
+      position: sticky;
+      top: 0;
+      background: var(--bg-card);
+      border-bottom:1px solid var(--border-color);
+      z-index: 100;
+    }
+
+    nav {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:20px 0;
+    }
+
+    .logo {
+      font-size:22px;
+      font-weight:700;
+      color:var(--accent-blue);
+      text-decoration:none;
+    }
+
+    .theme-toggle {
+      border:1px solid var(--border-color);
+      background:none;
+      padding:8px 12px;
+      border-radius:6px;
+      cursor:pointer;
+      color:var(--text-secondary);
+    }
+
+    main section { padding:60px 0; }
+
+    .page-header {
+      background: var(--bg-secondary);
+    }
+
+    .page-header h1 {
+      font-size:42px;
+      margin-bottom:12px;
+    }
+
+    .page-header p {
+      max-width:760px;
+      color:var(--text-secondary);
+      font-size:18px;
+    }
+
+    .filter-buttons {
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:24px;
+    }
+
+    .filter-btn {
+      text-decoration:none;
+      padding:10px 18px;
+      border:2px solid var(--border-color);
+      border-radius:8px;
+      color:var(--text-secondary);
+      font-weight:500;
+    }
+
+    .filter-btn:hover {
+      border-color:var(--accent-blue);
+      color:var(--accent-blue);
+      background:var(--accent-blue-light);
+    }
+
+    .articles-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+      gap:24px;
+    }
+
+    .article-card {
+      border:1px solid var(--border-color);
+      border-radius:12px;
+      padding:26px;
+      background:var(--bg-card);
+      cursor:pointer;
+      display:flex;
+      flex-direction:column;
+      transition:.3s;
+    }
+
+    .article-card:hover {
+      transform:translateY(-2px);
+      box-shadow:var(--shadow-hover);
+    }
+
+    .category-tag {
+      font-size:13px;
+      font-weight:600;
+      padding:6px 12px;
+      border-radius:6px;
+      width:fit-content;
+      margin-bottom:14px;
+    }
+
+    .tag-web { background:var(--accent-blue-light); color:var(--accent-blue); }
+    .tag-seo { background:var(--accent-green-light); color:var(--accent-green); }
+    .tag-tools { background:var(--accent-purple-light); color:var(--accent-purple); }
+    .tag-saas { background:var(--accent-orange-light); color:var(--accent-orange); }
+
+    h3 { font-size:21px; margin-bottom:10px; }
+
+    .article-excerpt {
+      color:var(--text-secondary);
+      margin-bottom:18px;
+      flex-grow:1;
+    }
+
+    .learn-more {
+      color:var(--accent-blue);
+      text-decoration:none;
+      font-weight:500;
+    }
+
+    footer {
+      padding:40px 0;
+      text-align:center;
+      border-top:1px solid var(--border-color);
+      color:var(--text-tertiary);
+      font-size:14px;
+    }
+
+    @media(max-width:768px){
+      .page-header h1 { font-size:32px; }
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <nav class="container">
+    <a class="logo" href="/">CloudAdmin</a>
+    <button class="theme-toggle" id="themeToggle">🌙 Dark</button>
+  </nav>
+</header>
+
+<main>
+
+<section class="page-header">
+  <div class="container">
+    <h1>CloudAdmin Blog</h1>
+    <p>Evergreen, beginner-friendly guides on web basics, SEO, SaaS concepts, and modern digital tools.</p>
+
+    <div class="filter-buttons">
+      <a href="/blog/" class="filter-btn">All (10)</a>
+      <a href="/web-basics/" class="filter-btn">Web Basics (3)</a>
+      <a href="/seo/" class="filter-btn">SEO (3)</a>
+      <a href="/tools/" class="filter-btn">Tools (2)</a>
+      <a href="/saas/" class="filter-btn">SaaS (2)</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="articles-grid">
+
+      <!-- WEB BASICS -->
+      <article class="article-card">
+        <span class="category-tag tag-web">Web Basics</span>
+        <h3>Essential HTML Tags for Beginners</h3>
+        <p class="article-excerpt">Learn the most important HTML tags every beginner should know to structure web pages correctly.</p>
+        <a href="/web-basics/essential-html-tags/" class="learn-more">Learn More →</a>
+      </article>
+
+      <article class="article-card">
+        <span class="category-tag tag-web">Web Basics</span>
+        <h3>How Websites Work: Domains, Hosting & Browsers</h3>
+        <p class="article-excerpt">Understand what happens behind the scenes when you open a website in your browser.</p>
+        <a href="/web-basics/how-websites-work/" class="learn-more">Learn More →</a>
+      </article>
+
+      <article class="article-card">
+        <span class="category-tag tag-web">Web Basics</span>
+        <h3>HTML vs CSS vs JavaScript Explained Simply</h3>
+        <p class="article-excerpt">A clear comparison of HTML, CSS, and JavaScript with real-world examples.</p>
+        <a href="/web-basics/html-css-javascript/" class="learn-more">Learn More →</a>
+      </article>
+
+      <!-- SEO -->
+      <article class="article-card">
+        <span class="category-tag tag-seo">SEO</span>
+        <h3>SEO Basics for Beginners</h3>
+        <p class="article-excerpt">A simple introduction to how search engines work and how SEO helps websites grow.</p>
+        <a href="/seo/seo-basics/" class="learn-more">Learn More →</a>
+      </article>
+
+      <article class="article-card">
+        <span class="category-tag tag-seo">SEO</span>
+        <h3>On-Page SEO Checklist for Blog Articles</h3>
+        <p class="article-excerpt">A practical checklist to optimize blog posts for search engines.</p>
+        <a href="/seo/on-page-seo-checklist/" class="learn-more">Learn More →</a>
+      </article>
+
+      <article class="article-card">
+        <span class="category-tag tag-seo">SEO</span>
+        <h3>SEO Basics for SaaS Websites</h3>
+        <p class="article-excerpt">Learn how SaaS websites use content and SEO to drive long-term growth.</p>
+        <a href="/seo/saas-seo-basics/" class="learn-more">Learn More →</a>
+      </article>
+
+      <!-- TOOLS -->
+      <article class="article-card">
+        <span class="category-tag tag-tools">Tools</span>
+        <h3>Best Web Development Tools for Beginners</h3>
+        <p class="article-excerpt">A beginner-friendly list of tools that make web development easier.</p>
+        <a href="/tools/web-development-tools/" class="learn-more">Learn More →</a>
+      </article>
+
+      <article class="article-card">
+        <span class="category-tag tag-tools">Tools</span>
+        <h3>Best SEO Tools for Beginners</h3>
+        <p class="article-excerpt">Free and paid SEO tools explained simply with use cases.</p>
+        <a href="/tools/seo-tools-for-beginners/" class="learn-more">Learn More →</a>
+      </article>
+
+      <!-- SAAS -->
+      <article class="article-card">
+        <span class="category-tag tag-saas">SaaS</span>
+        <h3>What Is SaaS? Explained for Beginners</h3>
+        <p class="article-excerpt">Understand Software-as-a-Service with simple real-world examples.</p>
+        <a href="/saas/what-is-saas/" class="learn-more">Learn More →</a>
+      </article>
+
+      <article class="article-card">
+        <span class="category-tag tag-saas">SaaS</span>
+        <h3>How SaaS Websites Use Content to Grow</h3>
+        <p class="article-excerpt">Learn how blogs and guides help SaaS companies grow organically.</p>
+        <a href="/saas/content-strategy/" class="learn-more">Learn More →</a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    © 2025 CloudAdmin · Educational guides for the cloud-first web
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('themeToggle');
+  const html = document.documentElement;
+  const saved = localStorage.getItem('theme') || 'light';
+  html.setAttribute('data-theme', saved);
+  toggle.textContent = saved === 'dark' ? '☀️ Light' : '🌙 Dark';
+
+  toggle.onclick = () => {
+    const t = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    html.setAttribute('data-theme', t);
+    localStorage.setItem('theme', t);
+    toggle.textContent = t === 'dark' ? '☀️ Light' : '🌙 Dark';
+  };
+
+  document.querySelectorAll('.article-card').forEach(card => {
+    card.onclick = () => {
+      const link = card.querySelector('a');
+      if (link) window.location.href = link.href;
+    };
+  });
+</script>
+</body>
+</html>
