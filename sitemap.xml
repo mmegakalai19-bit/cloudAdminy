@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Home -->
+  <url>
+    <loc>https://cloudadminlive.netlify.app/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Category: Web Basics -->
+  <url>
+    <loc>https://cloudadminlive.netlify.app/web-basics/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Category: SEO -->
+  <url>
+    <loc>https://cloudadminlive.netlify.app/seo/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Category: Tools -->
+  <url>
+    <loc>https://cloudadminlive.netlify.app/tools/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Category: SaaS -->
+  <url>
+    <loc>https://cloudadminlive.netlify.app/saas/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Articles -->
+  <url>
+    <loc>https://cloudadminlive.netlify.app/web-basics/essential-html-tags.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://cloudadminlive.netlify.app/web-basics/how-websites-work.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+</urlset>
