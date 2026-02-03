@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CloudAdmin - Learn the Cloud-First Web</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #ffffff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        header {
+            padding: 24px 0;
+            border-bottom: 1px solid #e5e7eb;
+            background: #ffffff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #3b82f6;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #4b5563;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #3b82f6;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0;
+            text-align: center;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #475569;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 16px 40px;
+            background: #3b82f6;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px rgba(59, 130, 246, 0.2);
+        }
+
+        .cta-button:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        /* Categories Section */
+        .categories {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 48px;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+        }
+
+        .category-card {
+            padding: 32px;
+            background: #ffffff;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .category-card:hover {
+            border-color: #3b82f6;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .category-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        .category-card h3 {
+            font-size: 22px;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 12px;
+        }
+
+        .category-card p {
+            color: #64748b;
+            font-size: 15px;
+        }
+
+        /* Featured Articles */
+        .featured {
+            padding: 80px 0;
+            background: #f9fafb;
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+        }
+
+        .article-card {
+            background: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s;
+        }
+
+        .article-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .article-content {
+            padding: 24px;
+        }
+
+        .article-tag {
+            display: inline-block;
+            padding: 6px 12px;
+            background: #dbeafe;
+            color: #1e40af;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .article-card h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 12px;
+        }
+
+        .article-card p {
+            color: #64748b;
+            font-size: 15px;
+        }
+
+        /* Why CloudAdmin Section */
+        .why-section {
+            padding: 80px 0;
+            background: #0f172a;
+            color: #ffffff;
+        }
+
+        .why-section .section-title {
+            color: #ffffff;
+        }
+
+        .why-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .why-content p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #cbd5e1;
+            margin-bottom: 20px;
+        }
+
+        /* Footer */
+        footer {
+            padding: 48px 0;
+            background: #f9fafb;
+            border-top: 1px solid #e5e7eb;
+            text-align: center;
+            color: #64748b;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .nav-links {
+                gap: 16px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">CloudAdmin</div>
+            <ul class="nav-links">
+                <li><a href="#guides">Guides</a></li>
+                <li><a href="#categories">Categories</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Learn the Cloud-First Web — Web, SEO & SaaS Explained Simply</h1>
+            <p>Your go-to resource for beginner-friendly, evergreen guides on modern web development, search optimization, and SaaS tools.</p>
+            <a href="#guides" class="cta-button">Explore Guides</a>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories" id="categories">
+        <div class="container">
+            <h2 class="section-title">Explore by Category</h2>
+            <div class="category-grid">
+                <div class="category-card">
+                    <div class="category-icon">🌐</div>
+                    <h3>Web Basics</h3>
+                    <p>Master the fundamentals of HTML, CSS, JavaScript, and modern web development.</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🔍</div>
+                    <h3>SEO</h3>
+                    <p>Learn search engine optimization strategies to boost your online visibility.</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🛠️</div>
+                    <h3>Tools</h3>
+                    <p>Discover essential developer tools and productivity boosters for modern workflows.</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">☁️</div>
+                    <h3>SaaS</h3>
+                    <p>Understand software as a service platforms and cloud-based solutions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Articles -->
+    <section class="featured" id="guides">
+        <div class="container">
+            <h2 class="section-title">Featured Guides</h2>
+            <div class="articles-grid">
+                <div class="article-card">
+                    <div class="article-content">
+                        <span class="article-tag">Web Basics</span>
+                        <h3>Getting Started with HTML5</h3>
+                        <p>A comprehensive introduction to modern HTML structure and semantic elements for beginners.</p>
+                    </div>
+                </div>
+                <div class="article-card">
+                    <div class="article-content">
+                        <span class="article-tag">SEO</span>
+                        <h3>Meta Tags That Matter in 2025</h3>
+                        <p>Learn which meta tags actually impact your search rankings and how to implement them correctly.</p>
+                    </div>
+                </div>
+                <div class="article-card">
+                    <div class="article-content">
+                        <span class="article-tag">Tools</span>
+                        <h3>VS Code Setup for Web Development</h3>
+                        <p>Configure your code editor with the best extensions and settings for productive web development.</p>
+                    </div>
+                </div>
+                <div class="article-card">
+                    <div class="article-content">
+                        <span class="article-tag">SaaS</span>
+                        <h3>Understanding Cloud Storage Solutions</h3>
+                        <p>Compare popular cloud storage platforms and choose the right solution for your needs.</p>
+                    </div>
+                </div>
+                <div class="article-card">
+                    <div class="article-content">
+                        <span class="article-tag">Web Basics</span>
+                        <h3>CSS Grid vs Flexbox: When to Use Each</h3>
+                        <p>Master layout techniques with this practical guide to choosing between Grid and Flexbox.</p>
+                    </div>
+                </div>
+                <div class="article-card">
+                    <div class="article-content">
+                        <span class="article-tag">SEO</span>
+                        <h3>Local SEO for Small Businesses</h3>
+                        <p>Optimize your online presence to attract local customers and improve regional search visibility.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why CloudAdmin Section -->
+    <section class="why-section" id="about">
+        <div class="container">
+            <h2 class="section-title">Why CloudAdmin?</h2>
+            <div class="why-content">
+                <p>CloudAdmin was created to demystify the modern web for everyone. Whether you're a complete beginner or looking to expand your knowledge, our guides are written in plain language without the jargon.</p>
+                <p>We believe that understanding the cloud-first web shouldn't require a computer science degree. Our mission is to provide clear, evergreen content that helps you build, optimize, and grow your online presence with confidence.</p>
+                <p>From fundamental web technologies to advanced SEO strategies and SaaS tools, we cover everything you need to succeed in today's digital landscape.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 CloudAdmin. All rights reserved. Making the cloud-first web accessible to everyone.</p>
+        </div>
+    </footer>
+</body>
+</html>
